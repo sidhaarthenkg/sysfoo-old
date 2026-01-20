@@ -1,0 +1,24 @@
+name: sysfoo-ci-pipeline
+on:  [push]
+jobs:
+  sysfoo-ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: helloWorld
+        run: echo "Welcome to sysfoo App"
+        
+      - name:  CodeCheckout 
+        uses: actions/checkout@v6.0.1
+        
+      - name: MavenTest   
+        run: mvn test 
+        
+      - name: MavenCLean
+        run: mvn clean
+        
+      - name: MavenPackage
+        run: mvn package
+
+      - name: View Files
+        run: ls -lrt
+      
